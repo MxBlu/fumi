@@ -7,20 +7,23 @@
   "scripts": {
     "start": "node dist/main.js",
     "fstart": "pm2 start --name fumi dist/main.js",
-    "build": "tsc --build tsconfig.json",
-    "clean": "tsc --build --clean",
+    "build": "tspc --build",
+    "clean": "tspc --build --clean",
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
-    "bot-framework": "Mxblu/bot-framework#9.0.0",
+    "bot-framework": "Mxblu/bot-framework#9.0.4",
     "bufferutil": "^4.0.8",
     "discord-api-types": "0.37.103",
     "discord.js": "14.16.3",
+    "dotenv": "^16.4.7",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
+    "ts-patch": "^3.3.0",
     "tsx": "^4.19.2",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "typescript-transform-paths": "^3.5.2"
   }
 }

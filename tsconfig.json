@@ -1,14 +1,18 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
-        "module": "ESNext",
+        "module": "NodeNext",
         "target": "ESNext",
-        "moduleResolution": "node",
+        "moduleResolution": "nodenext",
         "sourceMap": true,
         "downlevelIteration": true,
         "paths": {
             "fumi/*": [ "./src/*" ]
-        }
+        },
+        "plugins": [
+            { "transform": "typescript-transform-paths" }
+        ],
+        "skipLibCheck": true
     },
     "include": ["./src/**/*"]
 }

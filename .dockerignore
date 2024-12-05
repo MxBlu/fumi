@@ -1,5 +1,5 @@
 # Node/compile artifacts
-built
+dist
 node_modules
 
 # Yarn artifacts
