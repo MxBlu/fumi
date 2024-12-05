@@ -1,4 +1,5 @@
 import { DiscordBot } from "bot-framework/discord";
+import { ChooseCommand } from "fumi/commands/choose.js";
 
 class _Fumi extends DiscordBot {
 
@@ -10,6 +11,9 @@ class _Fumi extends DiscordBot {
     return "General purpose utility bot";
   }
 
+  protected loadProviders(): void {
+    this.providers.push(new ChooseCommand());
+  }
 }
 
 export const Fumi = new _Fumi();
