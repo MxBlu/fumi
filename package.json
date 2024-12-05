@@ -1,0 +1,26 @@
+{
+  "name": "fumi",
+  "version": "0.0.1",
+  "description": "General utility bot for Discord",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/main.js",
+    "fstart": "pm2 start --name fumi dist/main.js",
+    "build": "tsc --build tsconfig.json",
+    "clean": "tsc --build --clean",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "bot-framework": "Mxblu/bot-framework#9.0.0",
+    "bufferutil": "^4.0.8",
+    "discord-api-types": "0.37.103",
+    "discord.js": "14.16.3",
+    "zlib-sync": "^0.1.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "5.7.2"
+  }
+}

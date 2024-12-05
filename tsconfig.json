@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "module": "ESNext",
+        "target": "ESNext",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "paths": {
+            "fumi/*": [ "./src/*" ]
+        }
+    },
+    "include": ["./src/**/*"]
+}
