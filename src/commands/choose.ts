@@ -18,17 +18,17 @@ export class ChooseCommand implements CommandProvider<ChatInputCommandInteractio
         .addStringOption(
           new SlashCommandStringOption()
           .setName("options")
-          .setDescription("Options separated by semi-colons (;)")
+          .setDescription("Options separated by semi-colons or commas")
           .setRequired(true)) as unknown as CommandBuilder
     ]
   }
 
   provideHelpMessage(): string {
-    return "/choose <option>[;<option>] - Choose a random option out of multiple provided";
+    return "/choose <option>[,<option>] - Choose a random option out of multiple provided";
   }
 
   async handle(interaction: ChatInputCommandInteraction): Promise<void> {
-    const options = interaction.options.getString('options').split(";").map(o => escapeMarkdown(o));
+    const options = interaction.options.getString('options').split(/[;,]/).map(o => escapeMarkdown(o));
     const chosenOption = options[Math.floor(Math.random() * options.length)];
 
     const reply = `**Options**: [ ${options.join(', ')} ]\n**Chosen**: ${chosenOption}`
