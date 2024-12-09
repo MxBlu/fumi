@@ -1,4 +1,5 @@
 import { DiscordBot } from "bot-framework/discord";
+import { EightBallCommand } from "fumi/commands/8ball.js";
 import { ChooseCommand } from "fumi/commands/choose.js";
 
 class _Fumi extends DiscordBot {
@@ -13,6 +14,7 @@ class _Fumi extends DiscordBot {
 
   protected loadProviders(): void {
     this.providers.push(new ChooseCommand());
+    this.providers.push(new EightBallCommand());
   }
 }
 
