@@ -3,6 +3,9 @@ FROM node:18-alpine as deps
 
 WORKDIR /app
 
+# We need build tools if we need to build packages
+RUN apk add --no-cache python3 make g++
+
 # Fetch and install runtime dependencies
 COPY package.json yarn.lock ./
 RUN yarn install --production
@@ -13,6 +16,9 @@ RUN yarn install --production
 FROM node:18-alpine as build
 
 WORKDIR /app
+
+# We need build tools if we need to build packages
+RUN apk add --no-cache python3 make g++
 
 # Fetch runtime dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
