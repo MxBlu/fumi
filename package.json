@@ -14,12 +14,15 @@
   "dependencies": {
     "bot-framework": "Mxblu/bot-framework#9.0.5",
     "bufferutil": "^4.0.8",
+    "convert-units": "^2.3.4",
     "discord-api-types": "0.37.103",
     "discord.js": "14.16.3",
     "dotenv": "^16.4.7",
+    "fuse.js": "^7.0.0",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
+    "@types/convert-units": "^2.3.11",
     "@types/node": "^22.10.1",
     "ts-patch": "^3.3.0",
     "tsx": "^4.19.2",
