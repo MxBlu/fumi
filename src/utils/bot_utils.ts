@@ -6,14 +6,14 @@ import { FUMI_EMBED_COLOUR } from "fumi/constants.js";
 /**
  * Reply to an interaction with an embed with given fields.
  * 
- * This sets out a uniform embed style, and logs the interaction.
+ * This sets out a uniform embed style, and logs the interaction if a log message is provided.
  * 
- * Default
- * @param interaction 
- * @param fields 
- * @param logger 
- * @param logMessage 
- * @param logLevel 
+ * Default log level is INFO.
+ * @param interaction Discord chat interaction
+ * @param fields Embed fields
+ * @param logger Command logger
+ * @param logMessage Log message to print
+ * @param logLevel Log level to print at
  */
 export async function replyWithEmbed(interaction: ChatInputCommandInteraction, 
     fields: APIEmbedField[], logger: Logger, logMessage?: string, logLevel = LogLevel.INFO): Promise<void> {
@@ -26,12 +26,8 @@ export async function replyWithEmbed(interaction: ChatInputCommandInteraction,
     embeds: [ reply ],
     allowedMentions: { parse: [] }
   });
-  // Log the interaction
-  let composedLogMessage = `${interaction.user.username} - ${interaction.guild.name}`;
+  // Log the interaction if there is a log message
   if (logMessage) {
-    composedLogMessage += ` - ${logMessage}`;
-  } else {
-    composedLogMessage += ` - called ${logger.name}`;
+    logger.log(`${interaction.user.username} - ${interaction.guild.name} - ${logMessage}`, logLevel);
   }
-  logger.log(composedLogMessage, logLevel);
 }

@@ -9,7 +9,7 @@ export class ChooseCommand implements CommandProvider<ChatInputCommandInteractio
   logger: Logger;
 
   constructor() {
-    this.logger = new Logger("ChooseCommand");
+    this.logger = new Logger("Commands.Choose");
   }
 
   provideCommands(): CommandBuilder[] {

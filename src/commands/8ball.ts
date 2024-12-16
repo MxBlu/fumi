@@ -35,7 +35,7 @@ export class EightBallCommand implements CommandProvider<ChatInputCommandInterac
   logger: Logger;
 
   constructor() {
-    this.logger = new Logger("EightBallCommand");
+    this.logger = new Logger("Commands.EightBall");
   }
 
   provideCommands(): CommandBuilder[] {
