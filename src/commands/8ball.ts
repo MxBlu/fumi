@@ -1,6 +1,8 @@
 import { Logger, LogLevel } from "bot-framework";
-import { CommandBuilder, CommandProvider, sendCmdReply } from "bot-framework/discord";
+import { CommandBuilder, CommandProvider } from "bot-framework/discord";
 import { ChatInputCommandInteraction, escapeMarkdown, SlashCommandBuilder, SlashCommandStringOption } from "discord.js";
+
+import { replyWithEmbed } from "fumi/utils/bot_utils.js";
 
 const EIGHTBALL_RESPONSES = [
   "Most definitely yes.",
@@ -55,11 +57,11 @@ export class EightBallCommand implements CommandProvider<ChatInputCommandInterac
 
   async handle(interaction: ChatInputCommandInteraction): Promise<void> {
     const question = escapeMarkdown(interaction.options.getString('question'));
-
     const answer = EIGHTBALL_RESPONSES[Math.floor(Math.random() * EIGHTBALL_RESPONSES.length)];
-    const reply = `**${question}**:\n${answer}`;
-    
-    sendCmdReply(interaction, reply, this.logger, LogLevel.TRACE, { allowedMentions: { parse: [] } });
+
+    replyWithEmbed(interaction, [
+      { name: question, value: answer }
+    ], this.logger, `Answered 8-ball with ${answer}`, LogLevel.TRACE);
   }
 
 }
