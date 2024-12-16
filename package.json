@@ -1,6 +1,6 @@
 {
   "name": "fumi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "General utility bot for Discord",
   "main": "main.js",
   "type": "module",
