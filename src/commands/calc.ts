@@ -38,7 +38,7 @@ export class CalcCommand implements CommandProvider<ChatInputCommandInteraction>
       replyWithEmbed(interaction, [
           { name: math, value: `${result}` }
         ], this.logger, `Answered math equation: ${math}`, LogLevel.TRACE);
-    } catch (e) {
+    } catch (_) {
       this.logger.debug(`Equation could not be calculated: ${math}`);
       sendCmdReply(interaction, `Invalid equation`, this.logger, LogLevel.DEBUG, { ephemeral: true });
       return;

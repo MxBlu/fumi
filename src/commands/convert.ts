@@ -31,7 +31,6 @@ export class ConvertCommand implements CommandProvider<ChatInputCommandInteracti
   }
 
   provideCommands(): CommandBuilder[] {
-    const units = Object.keys(this.supportedUnits);
     return [
       new SlashCommandBuilder()
         .setName("convert")
@@ -92,7 +91,7 @@ export class ConvertCommand implements CommandProvider<ChatInputCommandInteracti
   async autocomplete(interaction: AutocompleteInteraction): Promise<void> {
     const focusedOption = interaction.options.getFocused();
     // Get top 5 unit suggestions
-    let suggestions = this.unitSearch.search(focusedOption, { limit: 5 }).map(res => res.item);
+    const suggestions = this.unitSearch.search(focusedOption, { limit: 5 }).map(res => res.item);
 
     this.logger.trace(`Generated suggestions: partial=${suggestions}`);
     // Return the suggestions

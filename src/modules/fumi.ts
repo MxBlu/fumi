@@ -1,6 +1,5 @@
 import { Dependency } from "bot-framework";
-import { ClientOptionsWithoutIntents, DiscordBot } from "bot-framework/discord";
-import { BitFieldResolvable, GatewayIntentsString } from "discord.js";
+import { DiscordBot } from "bot-framework/discord";
 import { EightBallCommand } from "fumi/commands/8ball.js";
 import { CalcCommand } from "fumi/commands/calc.js";
 import { ChooseCommand } from "fumi/commands/choose.js";
