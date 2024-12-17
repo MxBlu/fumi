@@ -20,6 +20,7 @@ export class ConvertCommand implements CommandProvider<ChatInputCommandInteracti
     // Add the supported currencies in
     CurrencyConversion.getCurrencies().forEach(currency => {
       this.supportedUnits[currency] = "currency";
+      this.supportedUnits[currency.toLowerCase()] = "currency";
     });
     // Add the supported measurements from convert-units in
     convert().possibilities().forEach(unit => {
@@ -80,7 +81,7 @@ export class ConvertCommand implements CommandProvider<ChatInputCommandInteracti
       convertedAmount = CurrencyConversion.convert(amount, from, to).toFixed(2);
     } else {
       // Use convert-units to do the conversion
-      convertedAmount = convert(amount).from(<convert.Unit> from).to(<convert.Unit> to).toPrecision(6);
+      convertedAmount = convert(amount).from(<convert.Unit> from).to(<convert.Unit> to).toPrecision(3);
     }
 
     replyWithEmbed(interaction, [
