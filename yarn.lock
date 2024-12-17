@@ -251,9 +251,9 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-bot-framework@Mxblu/bot-framework#9.0.6:
-  version "9.0.6"
-  resolved "https://codeload.github.com/Mxblu/bot-framework/tar.gz/7418c56cfa7e5bbb4f2c73add503e3c44061c58d"
+bot-framework@Mxblu/bot-framework#9.0.8:
+  version "9.0.8"
+  resolved "https://codeload.github.com/Mxblu/bot-framework/tar.gz/d2a399896f1595605987fc96071a66cab06f65fe"
   dependencies:
     dotenv "16.0.1"
 
