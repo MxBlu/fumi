@@ -44,7 +44,7 @@ function trimFieldValueLength(field: EmbedField): EmbedField {
     field.value = '" "';
   } else if (field.value.length > 1024) {
     // Handle above 1024 long
-    field.value = field.value.substring(0, 1022) + '...';
+    field.value = field.value.substring(0, 1021) + '...';
   }
 
   return field;
