@@ -1,5 +1,5 @@
 import { Logger, LogLevel } from "bot-framework";
-import { APIEmbedField, ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
+import { APIEmbedField, ChatInputCommandInteraction, EmbedBuilder, EmbedField } from "discord.js";
 
 import { FUMI_EMBED_COLOUR } from "fumi/constants.js";
 
@@ -20,7 +20,8 @@ export async function replyWithEmbed(interaction: ChatInputCommandInteraction,
   // Build embed with given fields
   const reply = new EmbedBuilder()
     .setColor(FUMI_EMBED_COLOUR)
-    .addFields(fields).toJSON();
+    .addFields(fields.map(trimFieldValueLength)).toJSON();
+
   // Send the reply
   await interaction.reply({
     embeds: [ reply ],
@@ -30,4 +31,21 @@ export async function replyWithEmbed(interaction: ChatInputCommandInteraction,
   if (logMessage) {
     logger.log(`${interaction.user.username} - ${interaction.guild.name} - ${logMessage}`, logLevel);
   }
+}
+
+/**
+ * Trim EmbedField values to meet the requirements
+ * @param field EmbedField
+ * @returns Same field
+ */
+function trimFieldValueLength(field: EmbedField): EmbedField {
+  if (field.value.length == 0) {
+    // Handle 0 length
+    field.value = '" "';
+  } else if (field.value.length > 1024) {
+    // Handle above 1024 long
+    field.value = field.value.substring(0, 1022) + '...';
+  }
+
+  return field;
 }

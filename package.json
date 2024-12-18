@@ -1,6 +1,6 @@
 {
   "name": "fumi",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "General utility bot for Discord",
   "main": "main.js",
   "type": "module",
@@ -12,6 +12,7 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
+    "@typegoose/typegoose": "12.9.0",
     "bot-framework": "Mxblu/bot-framework#9.0.8",
     "bufferutil": "^4.0.8",
     "convert-units": "^2.3.4",
@@ -20,6 +21,7 @@
     "dotenv": "^16.4.7",
     "fuse.js": "^7.0.0",
     "mathjs": "^14.0.1",
+    "mongoose": "8.8.0",
     "zlib-sync": "^0.1.9"
   },
   "devDependencies": {
