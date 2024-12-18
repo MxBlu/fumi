@@ -75,12 +75,17 @@ export class ConvertCommand implements CommandProvider<ChatInputCommandInteracti
     }
 
     let convertedAmount: string;
-    if (this.supportedUnits[from] == 'currency') {
-      // Use CurrencyConversion to do the conversion
-      convertedAmount = CurrencyConversion.convert(amount, from, to).toFixed(2);
-    } else {
-      // Use convert-units to do the conversion
-      convertedAmount = convert(amount).from(<convert.Unit> from).to(<convert.Unit> to).toPrecision(3);
+    try {
+      if (this.supportedUnits[from] == 'currency') {
+        // Use CurrencyConversion to do the conversion
+        convertedAmount = CurrencyConversion.convert(amount, from, to).toFixed(2);
+      } else {
+        // Use convert-units to do the conversion
+        convertedAmount = convert(amount).from(<convert.Unit> from).to(<convert.Unit> to).toPrecision(3);
+      }
+    } catch (_) {
+      sendCmdReply(interaction, `Bad conversion from ${from} to ${to}`, this.logger, LogLevel.DEBUG, { ephemeral: true });
+      return;
     }
 
     replyWithEmbed(interaction, [

@@ -20,7 +20,7 @@ export async function replyWithEmbed(interaction: ChatInputCommandInteraction,
   // Build embed with given fields
   const reply = new EmbedBuilder()
     .setColor(FUMI_EMBED_COLOUR)
-    .addFields(fields.map(trimFieldValueLength)).toJSON();
+    .addFields(fields.map(trimFieldPropertiesLength)).toJSON();
 
   // Send the reply
   await interaction.reply({
@@ -38,7 +38,17 @@ export async function replyWithEmbed(interaction: ChatInputCommandInteraction,
  * @param field EmbedField
  * @returns Same field
  */
-function trimFieldValueLength(field: EmbedField): EmbedField {
+function trimFieldPropertiesLength(field: EmbedField): EmbedField {
+  // Sanitise field.name
+  if (field.name.length == 0) {
+    // Handle 0 length
+    field.name = '" "';
+  } else if (field.name.length > 1024) {
+    // Handle above 1024 long
+    field.name = field.name.substring(0, 1021) + '...';
+  }
+
+  // Sanitise field.value
   if (field.value.length == 0) {
     // Handle 0 length
     field.value = '" "';
