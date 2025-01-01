@@ -1,7 +1,7 @@
 import { Logger } from "bot-framework";
 
 import { Fumi } from "fumi/modules/fumi.js";
-import { CurrencyConversion } from "./utils/conversion.js";
+import { CurrencyConversion } from "fumi/utils/conversion.js";
 
 // Setup global logger
 const logger = new Logger("Server");

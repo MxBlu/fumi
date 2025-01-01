@@ -2,10 +2,10 @@ import { Logger, LogLevel } from "bot-framework";
 import { CommandBuilder, CommandProvider, sendCmdReply } from "bot-framework/discord";
 import convert from 'convert-units';
 import { AutocompleteInteraction, ChatInputCommandInteraction, SlashCommandBuilder, SlashCommandNumberOption, SlashCommandStringOption } from "discord.js";
+import Fuse from "fuse.js";
 
 import { replyWithEmbed } from "fumi/utils/bot_utils.js";
 import { CurrencyConversion } from "fumi/utils/conversion.js";
-import Fuse from "fuse.js";
 
 
 export class ConvertCommand implements CommandProvider<ChatInputCommandInteraction> {
@@ -78,6 +78,7 @@ export class ConvertCommand implements CommandProvider<ChatInputCommandInteracti
     try {
       if (this.supportedUnits[from] == 'currency') {
         // Use CurrencyConversion to do the conversion
+        await CurrencyConversion.ensureRates();
         convertedAmount = CurrencyConversion.convert(amount, from, to).toFixed(2);
       } else {
         // Use convert-units to do the conversion
